@@ -9,13 +9,31 @@ const URL = require('../../config/default.json')
 router.get('/', (req, res) => res.send("bus part "))
 
 router.get("/:start/:end", async (req, res) => {
+    const stops_=[req.params.start,req.params.end]
     try {
-        const start = await Buses.find({ stops: req.params.start })
-        const end = await Buses.find({ stops: req.params.end })
-        if (start.length == 0 || end.length == 0) { return res.status(400).json({ msg: 'There is no Buses for this destination.' }) }
-        else {
-            res.json(start)
+        const buses = await Buses.find({stops:{$all:stops_}})
+        if (buses.lenght>0){
+            res.send([])
+        }else{
+            finalBus=[]
+            for (bus of buses){
+                counter = 0
+                tempStops = []
+                stops=bus.stops
+                for (j of stops){
+                    if (j==stops_[counter]){
+                        tempStops.push(j)
+                        counter++
+                    }
+                }
+                if(JSON.stringify(tempStops)==JSON.stringify(stops_)){
+                    finalBus.push(bus)
+                }
+
+            }
+            res.send(finalBus)
         }
+
     } catch (err) {
         console.error(err.message)
         res.status(500).send('Server Error')
