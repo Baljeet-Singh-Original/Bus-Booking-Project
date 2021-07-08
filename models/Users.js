@@ -22,40 +22,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    ticket: [{
-        from: {
-            type: String,
-            required: true
-
-        },
-        to: {
-            type: String,
-            required: true
-
-        },
-        nameArray: {
-            type: [String],
-            required: true
-        },
-        noArray: {
-            type: [String],
-            required: true
-        },
-        tokenData: {
-            type: String,
-            required: true
-
-        },
-        dat: {
-            type: Date,
-            required: true
-        },
-        date: {
-            type: Date,
-            default: Date.now
-        }
-
-    }],
+    ticket: [Object],
 
     date: {
         type: Date,

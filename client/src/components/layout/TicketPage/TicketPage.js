@@ -10,6 +10,7 @@ export default function TicketPage({ history }) {
         let tokenData = localStorage.getItem("selectedBusId")
         let dat = localStorage.getItem("date")
         const formData = { from, to, nameArray, noArray, tokenData, dat }
+        console.log(formData)
         addTicket(formData)
         console.log('first point')
         // addTicket(from, to, nameArray, noArray, tokenData, dat)
