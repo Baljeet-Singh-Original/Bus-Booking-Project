@@ -82,7 +82,7 @@ npm -v
 
 Follow the following steps to get development environment running.
 
-* Clone _'MERN-BUS-APP.git'_ repository from GitHub
+* Clone _'Bus-Booking-Project.git'_ repository from GitHub
 
   ```bash
   git clone https://github.com/Baljeet9670/Bus-Booking-Project.git
